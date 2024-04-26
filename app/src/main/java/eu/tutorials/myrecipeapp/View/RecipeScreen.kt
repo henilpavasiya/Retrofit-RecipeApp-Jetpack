@@ -1,4 +1,4 @@
-package eu.tutorials.myrecipeapp
+package eu.tutorials.myrecipeapp.View
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -21,6 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
+import eu.tutorials.myrecipeapp.Model.Category
+import eu.tutorials.myrecipeapp.ViewModel.MainViewModel
 
 @Composable
 fun RecipeScreen(modifier: Modifier = Modifier){

@@ -1,4 +1,4 @@
-package eu.tutorials.myrecipeapp
+package eu.tutorials.myrecipeapp.Model
 
 data class Category(
     val idCategory:String,
