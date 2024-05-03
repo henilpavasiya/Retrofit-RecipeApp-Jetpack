@@ -1,7 +1,7 @@
-package eu.tutorials.myrecipeapp
+package hp.androidproject.myrecipeapp
 
-import eu.tutorials.myrecipeapp.Model.CategoriesResponse
-import eu.tutorials.myrecipeapp.Model.MealsResponse
+import hp.androidproject.myrecipeapp.Model.CategoriesResponse
+import hp.androidproject.myrecipeapp.Model.MealsResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package eu.tutorials.myrecipeapp.Model
+package hp.androidproject.myrecipeapp.Model
 
 data class Category(
     val idCategory:String,

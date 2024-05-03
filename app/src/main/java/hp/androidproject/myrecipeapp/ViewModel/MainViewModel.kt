@@ -1,11 +1,11 @@
-package eu.tutorials.myrecipeapp.ViewModel
+package hp.androidproject.myrecipeapp.ViewModel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import eu.tutorials.myrecipeapp.Model.Category
-import eu.tutorials.myrecipeapp.recipeService
+import hp.androidproject.myrecipeapp.Model.Category
+import hp.androidproject.myrecipeapp.recipeService
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

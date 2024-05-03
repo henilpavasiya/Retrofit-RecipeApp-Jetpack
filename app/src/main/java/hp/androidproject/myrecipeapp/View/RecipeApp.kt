@@ -1,11 +1,10 @@
-package eu.tutorials.myrecipeapp.View
+package hp.androidproject.myrecipeapp.View
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import eu.tutorials.myrecipeapp.Screen
+import hp.androidproject.myrecipeapp.Screen
 
 @Composable
 fun RecipeApp(navController: NavHostController){

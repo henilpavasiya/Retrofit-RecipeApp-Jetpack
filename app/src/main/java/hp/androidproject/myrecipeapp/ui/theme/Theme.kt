@@ -1,4 +1,4 @@
-package eu.tutorials.myrecipeapp.ui.theme
+package hp.androidproject.myrecipeapp.ui.theme
 
 import android.app.Activity
 import android.os.Build

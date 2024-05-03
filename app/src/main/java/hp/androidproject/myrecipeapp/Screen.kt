@@ -1,4 +1,4 @@
-package eu.tutorials.myrecipeapp
+package hp.androidproject.myrecipeapp
 
 sealed class Screen(val route:String) {
     object RecipeScreen: Screen ("recipeScreen")
