@@ -16,9 +16,11 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,9 +45,8 @@ import eu.tutorials.myrecipeapp.Model.Meal
 import eu.tutorials.myrecipeapp.ViewModel.MainViewModel
 import eu.tutorials.myrecipeapp.ViewModel.MealViewModel
 
-
 @Composable
-fun RecipeScreen(modifier: Modifier = Modifier) {
+fun RecipeScreen(modifier: Modifier = Modifier,navigateToSecondScreen: (Category) -> Unit) {
     val recipeViewModel: MainViewModel = viewModel()
     val viewstate by recipeViewModel.categoriesState
 
@@ -65,7 +66,7 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
 
             else -> {
                 CategoryScreen(
-                    categories = viewstate.list, meals = viewmealstate.list
+                    categories = viewstate.list, meals = viewmealstate.list, navigateToSecondScreen
                 )
             }
         }
@@ -75,12 +76,13 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
 @Composable
 fun CategoryScreen(
     categories: List<Category>,
-    meals: List<Meal>
+    meals: List<Meal>,
+    navigateToSecondScreen: (Category) -> Unit
 ) {
 
     LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
         items(categories) { category ->
-            CategoryItem(category = category, meals = meals)
+            CategoryItem(category = category, meals = meals,navigateToSecondScreen)
         }
     }
 }
@@ -88,7 +90,7 @@ fun CategoryScreen(
 
 // How each Items looks like
 @Composable
-fun CategoryItem(category: Category, meals: List<Meal>) {
+fun CategoryItem(category: Category, meals: List<Meal>, navigateToSecondScreen:(Category)->Unit) {
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -96,14 +98,19 @@ fun CategoryItem(category: Category, meals: List<Meal>) {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Image(
-            painter = rememberAsyncImagePainter(category.strCategoryThumb),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxSize()
-                .aspectRatio(1f)
-        )
-
+        IconButton(onClick = {
+            navigateToSecondScreen(category)
+        },
+            modifier = Modifier.fillMaxSize()  // Adjust the Modifier as needed
+        ) {
+            Image(
+                painter = rememberAsyncImagePainter(category.strCategoryThumb),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .aspectRatio(1f)
+            )
+        }
         Row(
             modifier = Modifier.padding(10.dp),
             horizontalArrangement = Arrangement.Center
@@ -139,4 +146,6 @@ fun CategoryItem(category: Category, meals: List<Meal>) {
 
     }
 }
+
+
 
