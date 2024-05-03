@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp.ui.theme
+package eu.tutorials.myrecipeapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

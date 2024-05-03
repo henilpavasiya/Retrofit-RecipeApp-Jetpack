@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp.ui.theme
+package eu.tutorials.myrecipeapp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

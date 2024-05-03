@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp.View
+package eu.tutorials.myrecipeapp.View
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import hp.androidproject.myrecipeapp.Model.Category
+import eu.tutorials.myrecipeapp.Model.Category
 
 @Composable
 fun CategoriesDetailsScreen(category: Category) {

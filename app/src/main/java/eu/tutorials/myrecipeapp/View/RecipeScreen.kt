@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp.View
+package eu.tutorials.myrecipeapp.View
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -24,15 +24,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
-import hp.androidproject.myrecipeapp.Model.Category
-import hp.androidproject.myrecipeapp.Model.Meal
-import hp.androidproject.myrecipeapp.ViewModel.MainViewModel
-import hp.androidproject.myrecipeapp.ViewModel.MealViewModel
+import eu.tutorials.myrecipeapp.Model.Category
+import eu.tutorials.myrecipeapp.Model.Meal
+import eu.tutorials.myrecipeapp.ViewModel.MainViewModel
+import eu.tutorials.myrecipeapp.ViewModel.MealViewModel
 
 @Composable
-fun RecipeScreen(modifier: Modifier = Modifier,navigateToSecondScreen: (Category) -> Unit) {
-    val recipeViewModel: MainViewModel = viewModel()
-    val viewstate by recipeViewModel.categoriesState
+fun RecipeScreen(modifier: Modifier = Modifier,
+                 viewstate: MainViewModel.RecipeState,
+                 navigateToSecondScreen: (Category) -> Unit) {
+
 
     val mealViewModel: MealViewModel = viewModel()
     val viewmealstate by mealViewModel.mealsState
@@ -66,7 +67,7 @@ fun CategoryScreen(
 
     LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
         items(categories) { category ->
-            CategoryItem(category = category, meals = meals,navigateToSecondScreen)
+            CategoryItem(category = category, meals = meals, navigateToSecondScreen)
         }
     }
 }
@@ -74,7 +75,11 @@ fun CategoryScreen(
 
 // How each Items looks like
 @Composable
-fun CategoryItem(category: Category, meals: List<Meal>, navigateToSecondScreen:(Category)->Unit) {
+fun CategoryItem(
+    category: Category,
+    meals: List<Meal>,
+    navigateToSecondScreen: (Category) -> Unit
+) {
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -82,9 +87,10 @@ fun CategoryItem(category: Category, meals: List<Meal>, navigateToSecondScreen:(
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        IconButton(onClick = {
-            navigateToSecondScreen(category)
-        },
+        IconButton(
+            onClick = {
+                navigateToSecondScreen(category)
+            },
             modifier = Modifier.fillMaxSize()  // Adjust the Modifier as needed
         ) {
             Image(
@@ -108,7 +114,7 @@ fun CategoryItem(category: Category, meals: List<Meal>, navigateToSecondScreen:(
             // Optimized Ingredient Matching & Text Display
             val matchingIngredients =
                 meals.filter { meal -> // It iterates through each item (meal) in the meals list.
-                    category.strCategory.lowercase() == meal.strIngredient?.lowercase()
+                    category.strCategory.lowercase() == meal.strIngredient.lowercase()
                 }
 
             if (matchingIngredients.isNotEmpty()) {

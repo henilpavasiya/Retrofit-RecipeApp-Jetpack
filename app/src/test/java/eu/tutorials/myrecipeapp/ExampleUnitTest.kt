@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp
+package eu.tutorials.myrecipeapp
 
 import org.junit.Test
 

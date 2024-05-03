@@ -1,4 +1,4 @@
-package hp.androidproject.myrecipeapp.Model
+package eu.tutorials.myrecipeapp.Model
 
 data class Meal(
     val idIngredient: String,
