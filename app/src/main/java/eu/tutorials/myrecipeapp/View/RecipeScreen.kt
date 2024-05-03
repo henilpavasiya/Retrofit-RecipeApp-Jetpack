@@ -1,6 +1,7 @@
 package eu.tutorials.myrecipeapp.View
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -83,16 +84,13 @@ fun CategoryItem(
     Column(
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .clickable {
+                navigateToSecondScreen(category)
+            },
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        IconButton(
-            onClick = {
-                navigateToSecondScreen(category)
-            },
-            modifier = Modifier.fillMaxSize()  // Adjust the Modifier as needed
-        ) {
             Image(
                 painter = rememberAsyncImagePainter(category.strCategoryThumb),
                 contentDescription = null,
@@ -100,7 +98,6 @@ fun CategoryItem(
                     .fillMaxSize()
                     .aspectRatio(1f)
             )
-        }
         Row(
             modifier = Modifier.padding(10.dp),
             horizontalArrangement = Arrangement.Center
