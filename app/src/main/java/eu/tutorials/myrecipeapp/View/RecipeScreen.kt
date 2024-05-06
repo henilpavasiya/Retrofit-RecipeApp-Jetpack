@@ -12,9 +12,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -23,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import eu.tutorials.myrecipeapp.Model.Category
@@ -30,33 +38,64 @@ import eu.tutorials.myrecipeapp.Model.Meal
 import eu.tutorials.myrecipeapp.ViewModel.MainViewModel
 import eu.tutorials.myrecipeapp.ViewModel.MealViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecipeScreen(modifier: Modifier = Modifier,
                  viewstate: MainViewModel.RecipeState,
                  navigateToSecondScreen: (Category) -> Unit) {
 
 
-    val mealViewModel: MealViewModel = viewModel()
-    val viewmealstate by mealViewModel.mealsState
 
-    Box(modifier = Modifier.fillMaxSize()) {
-
-        when {
-            viewstate.loading || viewmealstate.loading -> {
-                CircularProgressIndicator(modifier.align(Alignment.Center))
-            }
-
-            viewstate.error != null || viewmealstate.error != null -> {
-                Text("ERROR OCCURRED")
-            }
-
-            else -> {
-                CategoryScreen(
-                    categories = viewstate.list, meals = viewmealstate.list, navigateToSecondScreen
+    MaterialTheme {
+        Scaffold(topBar = {
+                TopAppBar(
+                    {
+                        Text(text = "Recipe App", fontSize = 20.sp)
+                    },
+//                    backgroundColor = Color.Blue,
+//                    contentColor = Color.White,
+                    actions = {
+                        // Add your top app bar actions here (e.g., an IconButton)
+                        IconButton(onClick = { /* Handle action here */ }) {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "Search"
+                            )
+                        }
+                    }
                 )
-            }
-        }
+            }, content = { _ ->
+                // The main content of your app
+
+
+                val mealViewModel: MealViewModel = viewModel()
+                val viewmealstate by mealViewModel.mealsState
+
+                Box(modifier = Modifier.fillMaxSize()) {
+
+                    when {
+                        viewstate.loading || viewmealstate.loading -> {
+                            CircularProgressIndicator(modifier.align(Alignment.Center))
+                        }
+
+                        viewstate.error != null || viewmealstate.error != null -> {
+                            Text("ERROR OCCURRED")
+                        }
+
+                        else -> {
+                            CategoryScreen(
+                                categories = viewstate.list,
+                                meals = viewmealstate.list,
+                                navigateToSecondScreen
+                            )
+                        }
+                    }
+                }
+            })
     }
+
+
+
 }
 
 @Composable
