@@ -22,6 +22,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -52,14 +53,17 @@ fun RecipeScreen(modifier: Modifier = Modifier,
                     {
                         Text(text = "Recipe App", fontSize = 20.sp)
                     },
-//                    backgroundColor = Color.Blue,
-//                    contentColor = Color.White,
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color(0xFFFD7F58),  // Sets the background color
+                        titleContentColor = Color.White  // Sets the title text color
+                    ),
                     actions = {
                         // Add your top app bar actions here (e.g., an IconButton)
                         IconButton(onClick = { /* Handle action here */ }) {
                             Icon(
                                 imageVector = Icons.Default.Search,
-                                contentDescription = "Search"
+                                contentDescription = "Search",
+                                tint = Color.White
                             )
                         }
                     }
