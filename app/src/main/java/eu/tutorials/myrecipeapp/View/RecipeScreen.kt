@@ -62,7 +62,7 @@ fun RecipeScreen(modifier: Modifier = Modifier,
                         IconButton(onClick = { /* Handle action here */ }) {
                             Icon(
                                 imageVector = Icons.Default.Search,
-                                contentDescription = "Search",
+                                 contentDescription = "Search",
                                 tint = Color.White
                             )
                         }
