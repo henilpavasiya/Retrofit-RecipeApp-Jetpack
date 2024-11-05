@@ -22,7 +22,7 @@ fun RecipeApp(navController: NavHostController){
               // This part is responsible for passing data from current screen to details screen
                 // It utilizes the savedStateHandle, which component of the Compose navigation framework.
                 navController.currentBackStackEntry?.savedStateHandle?.set("cat", it)
-                navController.navigate (Screen. DetailScreen.route)
+                navController.navigate(Screen.DetailScreen.route)
             })
         }
         composable(Screen.DetailScreen.route){

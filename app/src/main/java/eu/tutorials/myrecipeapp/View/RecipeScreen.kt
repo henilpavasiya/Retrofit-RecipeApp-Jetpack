@@ -45,8 +45,6 @@ fun RecipeScreen(modifier: Modifier = Modifier,
                  viewstate: MainViewModel.RecipeState,
                  navigateToSecondScreen: (Category) -> Unit) {
 
-
-
     MaterialTheme {
         Scaffold(topBar = {
                 TopAppBar(
